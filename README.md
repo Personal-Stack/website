@@ -1,0 +1,2 @@
+# bbogdanov.net
+personal blog
