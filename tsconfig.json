@@ -1,0 +1,27 @@
+{
+  "compilerOptions": {
+    "target": "es5",
+    "module": "commonjs",
+    "jsx": "react",
+    "strict": true,
+    "noEmit": false,
+    "noImplicitAny": true,
+    "strictNullChecks": true,
+    "strictFunctionTypes": true,
+    "noImplicitThis": true,
+    "alwaysStrict": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "typeRoots": ["node_modules/@types"],
+    "baseUrl": ".",
+    "paths": {
+      "@app/components/*": ["src/components/*"],
+      "@app/types/*": ["src/types/*", "types/*"],
+      "@app/pages/*": ["src/pages/*"],
+      "@app/helpers/*": ["src/helpers/*"],
+      "@app/templates/*": ["src/templates/*"]
+    },
+    "esModuleInterop": true,
+  },
+  "exclude": ["./node_modules", "./public", "./.cache"]
+}

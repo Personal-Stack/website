@@ -1,0 +1,44 @@
+@import '../theme-ui';
+
+section#app__snippets {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+
+  justify-content: center;
+
+  article.app__code-snippet {
+    margin: 1rem;
+  }
+
+  #app__snippets__alert {
+    position: fixed;
+    bottom: 0;
+    margin: 2rem 0;
+    width: 50%;
+    display: flex;
+    justify-content: space-between;
+
+    span {
+      svg {
+        margin-left: 0.5rem;
+      }
+    }
+    button {
+      outline: none;
+
+      @media(min-width: 768px) {
+        width: 8rem;
+      }
+    }
+  }
+
+  footer {
+    button {
+      > a {
+        color: $color-text;
+      }
+    }
+  }
+
+}

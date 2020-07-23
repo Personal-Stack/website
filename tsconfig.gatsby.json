@@ -1,0 +1,27 @@
+{
+  "compilerOptions": {
+      "outDir": "./",
+      "target": "esnext",
+      "module": "commonjs",
+      "jsx": "react",
+      "noImplicitAny": true,
+      "strict": true,
+      "noEmit": false,
+      "noImplicitReturns": true,
+      "esModuleInterop": true,
+      "baseUrl": ".",
+      "paths": {
+        "@app/components/*": ["src/components/*"],
+        "@app/types/*": ["src/types/*", "types/*"],
+        "@app/pages/*": ["src/pages/*"],
+        "@app/helpers/*": ["src/helpers/*"],
+        "@app/templates/*": ["src/templates/*"]
+      },
+  },
+  "exclude": ["./node_modules", "./public", "./.cache", "./src/*"],
+  "include": [
+      "./gatsby-config.ts",
+      "./gatsby-node.ts",
+      "./gatsby-browser.tsx",
+  ]
+}

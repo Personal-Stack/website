@@ -1,0 +1,30 @@
+@import '../../theme-ui';
+
+.blog__post__link {
+  div.blog__post__link__time-to-read {
+    display: flex;
+    align-items: center;
+    color: $color-accent;
+
+    > * {
+      margin: 0 0.5rem;
+    }
+
+    > svg {
+      margin: 0;
+    }
+  }
+
+  a {
+    text-decoration: none;
+    color: $color-text;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+
+  h2 {
+    margin: 0;
+  }
+}

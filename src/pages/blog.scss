@@ -1,0 +1,34 @@
+div#app {
+  main {
+    section#app__blog {
+      flex-direction: row;
+      justify-content: flex-start;
+      align-items: flex-start;
+
+      padding: 0 1rem;
+
+      @media (min-width: 768px) {
+        justify-content: center;
+      }
+
+      ul {
+        display: flex;
+        flex-direction: column;
+
+        list-style-type: none;
+
+        li {
+          margin: 1rem 0;
+        }
+      }
+
+      section[role="list"] {
+       section[role="listitem"] {
+        h2 {
+          text-align: center;
+        }
+       }
+      }
+    }
+  }
+}

@@ -1,0 +1,67 @@
+article.app__code-snippet {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+  font-size: 8px;
+
+  @media(min-width: 768px) {
+    font-size: 12px;
+  }
+  
+  border: 1px solid #e1e4e8;
+
+  overflow: auto;
+  width: 300px;
+  max-height: 200px;
+
+  > header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    
+    padding: 1rem 1rem;
+
+    width: 100%;
+    background-color: #FAFBFC;
+    border: 1px solid #e1e4e8;
+
+    h3 {
+      margin: 0;
+    }
+
+    a {
+      float: right;
+      color: inherit;
+
+      font-size: 14px;
+    }
+  }
+
+  > pre {
+    flex: 10;
+    overflow: auto;
+    margin: 0;
+    padding: 1rem;
+
+    white-space: pre;
+  }
+
+  > footer {
+    display: flex;
+    flex-direction: row-reverse;
+    background-color: #FAFBFC;
+
+    > button {
+      outline: none;
+      margin: 0.3rem;
+      border-radius: 50%;
+
+      &:active {
+        border: 1px solid #e1e4e8;
+        font-size: 14px;
+      }
+    }
+
+  }
+}
