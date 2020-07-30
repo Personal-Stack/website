@@ -3,5 +3,8 @@
     "esnext",
     "fortawesome",
     "prismjs"
-  ]
+  ],
+  "files.exclude": {
+    "*.js": true
+  }
 }
