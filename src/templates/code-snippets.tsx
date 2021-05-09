@@ -4,10 +4,8 @@ import { NavigationLink } from '@app/types/navigation-link';
 import { Layout } from '@app/components/layout/layout';
 import { Helmet } from 'react-helmet';
 import { Gist } from '@app/types/gist';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faCheck } from '@fortawesome/free-solid-svg-icons';
 import { CodeSnippet } from '@app/components/code-snippet/code-snippet';
-import { Alert, Button } from 'theme-ui';
+import { CopyAlert } from '@app/components/copy-alert/copy-alert';
 import './code-snippets.scss';
 
 interface CodeSnippetsProps {
@@ -21,7 +19,10 @@ interface CodeSnippetsState extends CodeSnippetsProps {
   showAlert?: boolean;
 }
 
-export default class CodeSnippetsPage extends Component<CodeSnippetsProps, CodeSnippetsState> {
+export default class CodeSnippetsPage extends Component<
+  CodeSnippetsProps,
+  CodeSnippetsState
+> {
   constructor(props: any) {
     super(props);
 
@@ -42,13 +43,13 @@ export default class CodeSnippetsPage extends Component<CodeSnippetsProps, CodeS
     if (!disableAutoHide) {
       setTimeout(() => this.hideAlert(), 2000);
     }
-  }
+  };
 
   public hideAlert = () => {
     this.setState({
       showAlert: false,
     });
-  }
+  };
 
   public render() {
     return (
@@ -59,7 +60,7 @@ export default class CodeSnippetsPage extends Component<CodeSnippetsProps, CodeS
         <Helmet>
           <title> BB | Code snippets</title>
         </Helmet>
-        <section id='app__snippets' role='list'>
+        <section id="app__snippets" role="list">
           {this.state.gists?.map((el, idx) =>
             el.files.map((file) => (
               <CodeSnippet
@@ -68,18 +69,11 @@ export default class CodeSnippetsPage extends Component<CodeSnippetsProps, CodeS
                 fileLinkToGithub={el.url}
                 alert={this.copyWasTriggeredAlert}
               />
-            )),
+            ))
           )}
 
           {this.state.showAlert ? (
-            <Alert id='app__snippets__alert' variant='accent'>
-              <span>
-                Copy <FontAwesomeIcon icon={faCheck} />
-              </span>
-              <Button variant='accent' onClick={this.hideAlert}>
-                OK
-              </Button>
-            </Alert>
+            <CopyAlert hideAlertFunc={() => this.hideAlert.bind(this)} />
           ) : null}
         </section>
       </Layout>

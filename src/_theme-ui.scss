@@ -1,6 +1,10 @@
+@import '~normalize.css/normalize.css'; // css reset
+@import '~@cds/core/global.min'; // clarity global styles
+@import '~@cds/core/styles/module.shims.min'; // non-evergreen browser shims
+
 $color-text: #212529;
 $color-background: #fff;
-$color-primary: #6C757D;
-$color-secondary:#CED4DA;
-$color-muted: #E9ECEF;
-$color-accent: #4CAF50;
+$color-primary: #6c757d;
+$color-secondary: #ced4da;
+$color-muted: #e9ecef;
+$color-accent: #4caf50;

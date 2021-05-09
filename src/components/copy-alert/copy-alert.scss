@@ -1,0 +1,16 @@
+.copy-alert__wrapper {
+  position: fixed;
+  text-align: center;
+  justify-content: center;
+  display: flex;
+  width: 100%;
+  bottom: 4rem;
+
+  @media only screen and (min-width: 768px) {
+    bottom: 8rem;
+  }
+
+  > * {
+    width: 70%;
+  }
+}

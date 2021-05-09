@@ -53,10 +53,45 @@ const query = `
     }
   }`;
 
+export const onCreateWebpackConfig = ({
+  stage,
+  loaders,
+  actions,
+}: {
+  stage: unknown;
+  loaders: { null: () => void };
+  actions: {
+    setWebpackConfig: (_: unknown) => void;
+  };
+}) => {
+  if (stage === 'build-html' || stage === 'develop-html') {
+    actions.setWebpackConfig({
+      module: {
+        rules: [
+          {
+            test: /lit-html/,
+            use: loaders.null(),
+          },
+          {
+            test: /lit-element/,
+            use: loaders.null(),
+          },
+          {
+            test: /@cds\/core/,
+            use: loaders.null(),
+          },
+        ],
+      },
+    });
+  }
+};
+
 export const createPages: GatsbyCreatePages = async ({ graphql, actions }) => {
   const { createPage } = actions;
 
-  const allCodeSnippetsTemplate = path.resolve(`./src/templates/code-snippets.tsx`);
+  const allCodeSnippetsTemplate = path.resolve(
+    `./src/templates/code-snippets.tsx`
+  );
   const codeSnippetTemplate = path.resolve(`./src/templates/code-snippet.tsx`);
   const blogPostTemplate = path.resolve(`./src/templates/blog-post.tsx`);
 
@@ -83,23 +118,22 @@ export const createPages: GatsbyCreatePages = async ({ graphql, actions }) => {
   }
 
   if (data.github && data.github.viewer) {
-
     if (data.github.viewer.gists.nodes.length) {
       createPage({
         path: `/code-snippets`,
         component: allCodeSnippetsTemplate,
         context: {
           siteMetadata: data.site.siteMetadata,
-          socialLinks: data.socialLinks && data.socialLinks.edges.map(socialLinkEdgesMap),
+          socialLinks:
+            data.socialLinks && data.socialLinks.edges.map(socialLinkEdgesMap),
           navigationLinks: data.site.siteMetadata.menuLinks,
           gists: data.github.viewer.gists.nodes,
         },
       });
     }
 
-
     data.github.viewer.gists.nodes.map((el: Gist) =>
-      el.files.map((file: IGistFile) => (
+      el.files.map((file: IGistFile) =>
         createPage({
           path: `/code-snippet/${file.name}`,
           component: codeSnippetTemplate,
@@ -110,7 +144,7 @@ export const createPages: GatsbyCreatePages = async ({ graphql, actions }) => {
             fileLinkToGithub: el.url,
           },
         })
-      )),
+      )
     );
   }
 };
@@ -125,16 +159,15 @@ interface PageInput {
 interface ActionCreators {
   createPage: (page: PageInput) => void;
   deletePage: (page: PageInput) => void;
-  createRedirect: (
-    opts: {
-      fromPath: string;
-      isPermanent?: boolean;
-      redirectInBrowser?: boolean;
-      toPath: string;
-    },
-  ) => void;
+  createRedirect: (opts: {
+    fromPath: string;
+    isPermanent?: boolean;
+    redirectInBrowser?: boolean;
+    toPath: string;
+  }) => void;
 }
 
-export type GatsbyCreatePages = (
-  fns: { graphql: any; actions: ActionCreators },
-) => void;
+export type GatsbyCreatePages = (fns: {
+  graphql: any;
+  actions: ActionCreators;
+}) => void;
